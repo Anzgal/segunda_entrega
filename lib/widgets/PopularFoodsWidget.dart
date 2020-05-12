@@ -266,28 +266,28 @@ class PopularFoodItems extends StatelessWidget {
       children: <Widget>[
         PopularFoodTiles(
             name: "Bonafont Agua 1L",
-            imageUrl: "ic_popular_food_2",
+            imageUrl: "Agua",
             rating: '4.9',
             numberOfRating: '200',
             price: '15.06',
             slug: "fried_egg"),
         PopularFoodTiles(
             name: "Bolillos 1pza",
-            imageUrl: "ic_popular_food_1",
+            imageUrl: "Bolillos",
             rating: "4.9",
             numberOfRating: "100",
             price: "1.50",
             slug: ""),
         PopularFoodTiles(
             name: "Jitomates 1kg",
-            imageUrl: "ic_popular_food_3",
+            imageUrl: "Jitomate",
             rating: "4.0",
             numberOfRating: "50",
             price: "40.00",
             slug: ""),
         PopularFoodTiles(
             name: "Tortillas 1kg",
-            imageUrl: "ic_popular_food_4",
+            imageUrl: "Tortilla",
             rating: "4.00",
             numberOfRating: "100",
             price: "12.00",
