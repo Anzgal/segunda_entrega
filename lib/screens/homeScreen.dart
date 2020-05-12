@@ -18,12 +18,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Color(0xFFFAFAFA),
         elevation: 0,
-        title: Text(
-          "What would you like to eat?",
-          style: TextStyle(
-              color: Color(0xFF3a3737),
-              fontSize: 16,
-              fontWeight: FontWeight.w500),
+        title: Image.asset(
+          "assets/images/menus/tienditapp.png",
+          height: 200,
+          width: 200,
         ),
         brightness: Brightness.light,
         actions: <Widget>[

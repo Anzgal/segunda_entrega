@@ -70,12 +70,22 @@ flutter:
     - assets/images/topmenu/ic_pizza.png
     - assets/images/topmenu/ic_sushi.png
     - assets/images/topmenu/ic_soft_drink.png
+    - assets/images/topmenu/bread_icon.png
+    - assets/images/topmenu/fruta_icon.png
+    - assets/images/topmenu/vegetables_icon.png
+    - assets/images/topmenu/water icon.png
     - assets/images/popular_foods/ic_popular_food_1.png
     - assets/images/popular_foods/ic_popular_food_2.png
     - assets/images/popular_foods/ic_popular_food_3.png
     - assets/images/popular_foods/ic_popular_food_4.png
     - assets/images/popular_foods/ic_popular_food_5.png
     - assets/images/popular_foods/ic_popular_food_6.png
+    - assets/images/popular_foods/Agua.png
+    - assets/images/popular_foods/Arroz.png
+    - assets/images/popular_foods/Bolillos.png
+    - assets/images/popular_foods/Coca-Cola.png
+    - assets/images/popular_foods/Jitomate.png
+    - assets/images/popular_foods/Tortilla.png
     - assets/images/bestfood/ic_best_food_1.jpeg
     - assets/images/bestfood/ic_best_food_2.jpeg
     - assets/images/bestfood/ic_best_food_3.jpeg
@@ -86,6 +96,11 @@ flutter:
     - assets/images/bestfood/ic_best_food_8.jpeg
     - assets/images/bestfood/ic_best_food_9.jpeg
     - assets/images/bestfood/ic_best_food_10.jpeg
+    - assets/images/bestfood/panaderia.jpeg
+    - assets/images/bestfood/tienda_1.jpeg
+    - assets/images/bestfood/tienda_2.jpeg
+    - assets/images/bestfood/verduras.jpeg
+    - assets/images/bestfood/frutas.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

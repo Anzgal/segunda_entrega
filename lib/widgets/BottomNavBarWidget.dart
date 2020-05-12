@@ -40,28 +40,28 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             title: Text(
-              'Home',
+              'Inicio',
               style: TextStyle(color: Color(0xFF2c2b2b)),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.near_me),
             title: Text(
-              'Near By',
+              'Cerca',
               style: TextStyle(color: Color(0xFF2c2b2b)),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.card_giftcard),
             title: Text(
-              'Cart',
+              'Carrito',
               style: TextStyle(color: Color(0xFF2c2b2b)),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.user),
             title: Text(
-              'Account',
+              'Cuenta',
               style: TextStyle(color: Color(0xFF2c2b2b)),
             ),
           ),
