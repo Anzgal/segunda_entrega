@@ -3,13 +3,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../screens/homeScreen.dart';
 import '../screens/FoodOrderPage.dart';
 import '../screens/User.dart';
+import 'package:flutter/services.dart';
+
 
 class BottomNavBarWidget extends StatefulWidget {
+
 
   @override _BottomNavBarWidgetState createState() => _BottomNavBarWidgetState();
 }
 
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
+
   int index = 0;
   List<Widget> _widgets = [
     HomePage(),
@@ -26,7 +30,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   @override
   Widget build(BuildContext context) {
 
-
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
       body: _widgets[index],
 
