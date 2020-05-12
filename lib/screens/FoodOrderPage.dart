@@ -15,16 +15,17 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
         appBar: AppBar(
           backgroundColor: Color(0xFFFAFAFA),
           elevation: 0,
+          /*
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
               color: Color(0xFF3a3737),
             ),
             onPressed: () => Navigator.of(context).pop(),
-          ),
+          ),*/
           title: Center(
             child: Text(
-              "Item Carts",
+              "Carrito de compras",
               style: TextStyle(
                   color: Color(0xFF3a3737),
                   fontWeight: FontWeight.w600,
@@ -46,7 +47,7 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                 Container(
                   padding: EdgeInsets.only(left: 5),
                   child: Text(
-                    "Your Food Cart",
+                    "Tu pedido",
                     style: TextStyle(
                         fontSize: 20,
                         color: Color(0xFF3a3a3b),
@@ -58,18 +59,18 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                   height: 10,
                 ),
                 CartItem(
-                    productName: "Grilled Salmon",
-                    productPrice: "\$96.00",
+                    productName: "Coca-Cola 600ml",
+                    productPrice: "\$12",
                     productImage: "ic_popular_food_1",
-                    productCartQuantity: "2"),
+                    productCartQuantity: 2),
                 SizedBox(
                   height: 10,
                 ),
                 CartItem(
-                    productName: "Meat vegetable",
-                    productPrice: "\$65.08",
+                    productName: "Sabritas adobadas",
+                    productPrice: "\$15",
                     productImage: "ic_popular_food_4",
-                    productCartQuantity: "5"),
+                    productCartQuantity: 5),
                 SizedBox(
                   height: 10,
                 ),
@@ -84,7 +85,7 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                 Container(
                   padding: EdgeInsets.only(left: 5),
                   child: Text(
-                    "Payment Method",
+                    "Método de pago",
                     style: TextStyle(
                         fontSize: 20,
                         color: Color(0xFF3a3a3b),
@@ -96,6 +97,24 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                   height: 10,
                 ),
                 PaymentMethodWidget(),
+                SizedBox(
+                  height: 30,
+                ),
+                Center( child:FlatButton(
+                  color: Colors.red,
+                  textColor: Colors.white,
+                  //disabledColor: Colors.grey,
+                  //disabledTextColor: Colors.black,
+                  padding: EdgeInsets.all(15.0),
+                  splashColor: Colors.redAccent,
+                  onPressed: () {
+                    /*...*/
+                  },
+                  child: Text(
+                    "Confirmar pedido",
+                    style: TextStyle(fontSize: 15.0),
+                  ),
+                ))
               ],
             ),
           ),
@@ -134,13 +153,13 @@ class PaymentMethodWidget extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  "assets/images/menus/ic_credit_card.png",
+                  "assets/images/menus/efectivo.png",
                   width: 50,
                   height: 50,
                 ),
               ),
               Text(
-                "Credit/Debit Card",
+                "Efectivo",
                 style: TextStyle(
                     fontSize: 16,
                     color: Color(0xFF3a3a3b),
@@ -190,7 +209,7 @@ class TotalCalculationWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "Grilled Salmon",
+                    "Coca-Cola 600ml",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
@@ -198,7 +217,7 @@ class TotalCalculationWidget extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    "\$192",
+                    "\$24",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
@@ -214,7 +233,7 @@ class TotalCalculationWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "Meat vegetable",
+                    "Sabritas adobadas",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
@@ -222,7 +241,7 @@ class TotalCalculationWidget extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    "\$102",
+                    "\$75",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
@@ -246,7 +265,7 @@ class TotalCalculationWidget extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    "\$292",
+                    "\$99",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
@@ -269,7 +288,7 @@ class CartItem extends StatelessWidget {
   String productName;
   String productPrice;
   String productImage;
-  String productCartQuantity;
+  int productCartQuantity;
 
   CartItem({
     Key key,
@@ -371,7 +390,7 @@ class CartItem extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(left: 20),
                       alignment: Alignment.centerRight,
-                      child: AddToCartMenu(2),
+                      child: AddToCartMenu(productCartQuantity),
                     )
                   ],
                 )
@@ -383,7 +402,7 @@ class CartItem extends StatelessWidget {
 }
 
 class CartIconWithBadge extends StatelessWidget {
-  int counter = 3;
+  int counter = 7;
 
   @override
   Widget build(BuildContext context) {
@@ -454,7 +473,7 @@ class AddToCartMenu extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Add To $productCounter',
+                  'Piezas: $productCounter',
                   style: new TextStyle(
                       fontSize: 12.0,
                       color: Colors.white,
