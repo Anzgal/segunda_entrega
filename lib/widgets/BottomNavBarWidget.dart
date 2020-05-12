@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../screens/homeScreen.dart';
 import '../screens/FoodOrderPage.dart';
+import '../screens/User.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
 
@@ -14,7 +15,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     HomePage(),
     HomePage(),
     FoodOrderPage(),
-    HomePage()
+    ProfilePage()
   ];
   tapped(int tappedIndex) {
     setState(() {
