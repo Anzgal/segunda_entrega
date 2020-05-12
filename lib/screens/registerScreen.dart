@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../animation/ScaleRoute.dart';
 import '../screens/homeScreen.dart';
 import '../screens/loginScreen.dart';
+import '../widgets/BottomNavBarWidget.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -271,7 +272,7 @@ class SignInButtonWidget extends StatelessWidget {
                   fontFamily: "WorkSansBold"),
             ),
           ),
-          onPressed: () => {Navigator.push(context, ScaleRoute(page: HomePage()))}),
+          onPressed: () => {Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()))}),
     );
   }
 }
