@@ -20,8 +20,8 @@ class _MapPageState extends State<MapPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Vista del mapa'),
-          backgroundColor: Colors.green[700],
+          title: Text('Encuentra tiendas en tu zona'),
+          backgroundColor: Color(0xFFfd2c2c),
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
