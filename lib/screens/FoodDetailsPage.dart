@@ -12,7 +12,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 1,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -49,7 +49,9 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 semanticContainer: true,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Image.asset(
-                  'assets/images/bestfood/' + 'ic_best_food_8' + ".jpeg",
+                  'assets/images/popular_foods/' + 'Coca-Cola' + ".png",
+                  height: 200,
+                  width: 200,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(3.0),
@@ -66,9 +68,9 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
               ),*/
 
               FoodTitleWidget(
-                  productName: "Grilled Salmon",
-                  productPrice: "\$96.00",
-                  productHost: "pizza hut"),
+                  productName: "Coca-Cola de 600ml",
+                  productPrice: "\$11.00",
+                  productHost: "Tienda de la Esquina"),
               SizedBox(
                 height: 15,
               ),
@@ -88,28 +90,15 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   ),
                   tabs: [
                     Tab(
-                      text: 'Food Details',
-                    ),
-                    Tab(
-                      text: 'Food Reviews',
+                      text: 'Detalles del producto',
                     ),
                   ], // list of tabs
                 ),
               ),
               Container(
                 height: 150,
-                child: TabBarView(
-                  children: [
-                    Container(
-                      color: Colors.white24,
-                      child: DetailContentMenu(),
-                    ),
-                    Container(
-                      color: Colors.white24,
-                      child: DetailContentMenu(),
-                    ), // class name
-                  ],
-                ),
+                color: Colors.white24,
+                child: DetailContentMenu(),
               ),
               BottomMenu(),
             ],
@@ -161,7 +150,7 @@ class FoodTitleWidget extends StatelessWidget {
         Row(
           children: <Widget>[
             Text(
-              "by ",
+              "en ",
               style: TextStyle(
                   fontSize: 16,
                   color: Color(0xFFa9a9a9),
@@ -200,10 +189,10 @@ class BottomMenu extends StatelessWidget {
                 height: 15,
               ),
               Text(
-                "12pm-3pm",
+                "12pm-7pm",
                 style: TextStyle(
                     fontSize: 14,
-                    color: Color(0xFFa9a9a9),
+                    color: Colors.black,
                     fontWeight: FontWeight.w300),
               )
             ],
@@ -219,48 +208,10 @@ class BottomMenu extends StatelessWidget {
                 height: 15,
               ),
               Text(
-                "3.5 km",
+                "1.5 km",
                 style: TextStyle(
                     fontSize: 14,
-                    color: Color(0xFFa9a9a9),
-                    fontWeight: FontWeight.w300),
-              )
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              Icon(
-                Icons.map,
-                color: Color(0xFFff0654),
-                size: 35,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                "Map View",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFFa9a9a9),
-                    fontWeight: FontWeight.w300),
-              )
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              Icon(
-                Icons.directions_bike,
-                color: Color(0xFFe95959),
-                size: 35,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                "Delivery",
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFFa9a9a9),
+                    color: Colors.black,
                     fontWeight: FontWeight.w300),
               )
             ],
@@ -298,7 +249,7 @@ class AddToCartMenu extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Add To Bag',
+                  'Añadir al carrito',
                   style: new TextStyle(
                       fontSize: 18.0,
                       color: Colors.white,
@@ -324,7 +275,7 @@ class DetailContentMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text(
-        'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero\'s De Finibus Bonorum et Malorum for use in a type specimen book.',
+        'Coca-cola de 600ml directamente del refrigerador de la tienda, o al tiempo si usted lo desea',
         style: TextStyle(
             fontSize: 14.0,
             color: Colors.black87,

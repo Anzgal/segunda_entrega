@@ -265,8 +265,8 @@ class PopularFoodItems extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       children: <Widget>[
         PopularFoodTiles(
-            name: "Bonafont Agua 1L",
-            imageUrl: "Agua",
+            name: "Coca-Cola 600ml",
+            imageUrl: "Coca-Cola",
             rating: '4.9',
             numberOfRating: '200',
             price: '15.06',
