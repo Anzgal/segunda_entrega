@@ -25,7 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   carousel_pro: ^1.0.0
   font_awesome_flutter: 8.8.1
-
+  google_maps_flutter: ^0.4.0
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +86,7 @@ flutter:
     - assets/images/popular_foods/Coca-Cola.png
     - assets/images/popular_foods/Jitomate.png
     - assets/images/popular_foods/Tortilla.png
+    - assets/images/popular_foods/sabritas-adobadas.png
     - assets/images/bestfood/ic_best_food_1.jpeg
     - assets/images/bestfood/ic_best_food_2.jpeg
     - assets/images/bestfood/ic_best_food_3.jpeg

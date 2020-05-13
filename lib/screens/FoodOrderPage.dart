@@ -61,7 +61,7 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                 CartItem(
                     productName: "Coca-Cola 600ml",
                     productPrice: "\$12",
-                    productImage: "ic_popular_food_1",
+                    productImage: "Coca-Cola",
                     productCartQuantity: 2),
                 SizedBox(
                   height: 10,
@@ -69,7 +69,7 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                 CartItem(
                     productName: "Sabritas adobadas",
                     productPrice: "\$15",
-                    productImage: "ic_popular_food_4",
+                    productImage: "sabritas-adobadas",
                     productCartQuantity: 5),
                 SizedBox(
                   height: 10,
@@ -217,7 +217,7 @@ class TotalCalculationWidget extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    "\$24",
+                    "\$15",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
@@ -241,7 +241,7 @@ class TotalCalculationWidget extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    "\$75",
+                    "\$12",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
@@ -265,7 +265,7 @@ class TotalCalculationWidget extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    "\$99",
+                    "\$27",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),

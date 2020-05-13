@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/MapPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../screens/homeScreen.dart';
 import '../screens/FoodOrderPage.dart';
@@ -17,7 +18,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   int index = 0;
   List<Widget> _widgets = [
     HomePage(),
-    HomePage(),
+    MapPage(),
     FoodOrderPage(),
     ProfilePage()
   ];
