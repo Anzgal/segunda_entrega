@@ -24,14 +24,7 @@ class _HomePageState extends State<HomePage> {
           width: 200,
         ),
         brightness: Brightness.light,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(
-                Icons.notifications_none,
-                color: Color(0xFF3a3737),
-              ),
-              onPressed: () {Navigator.push(context, ScaleRoute(page: SignInPage()));})
-        ],
+
       ),
       body: SingleChildScrollView(
         child: Column(
