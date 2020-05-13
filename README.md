@@ -25,4 +25,5 @@ Algunas vistas fueron inspiradas en tutoriales
 Ligas de github de los tutoriales:
 https://github.com/flutter-devs/flutter_profileview_demo
 https://levelup.gitconnected.com/tab-bar-navigation-in-flutter-5363e5ee8a60
+https://medium.com/comunidad-flutter/login-b%C3%A1sico-flutter-e0a479c38036
 https://github.com/Tarikul711/flutter-food-delivery-app-ui
