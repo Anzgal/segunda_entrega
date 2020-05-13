@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../screens/ShopScreen.dart';
+import '../animation/ScaleRoute.dart';
 
 class BestFoodWidget extends StatefulWidget {
   @override
@@ -65,7 +67,7 @@ class BestFoodTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {Navigator.push(context, ScaleRoute(page: ShopPage()));},
       child: Column(
         children: <Widget>[
           Container(
