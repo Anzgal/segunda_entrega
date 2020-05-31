@@ -1,5 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter_app/providers/auth.dart';
+import 'package:flutter_app/widgets/BottomNavBarWidget.dart';
+import 'package:flutter_app/widgets/loading.dart';
+import 'package:provider/provider.dart';
+
 import 'loginScreen.dart';
 import 'registerScreen.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +31,23 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _onShowLogin() {
+    final auth = Provider.of<AuthProvider>(context, listen: false);
     if(mounted){
-      Navigator.push(context, ScaleRoute(page: SignInPage()));
+      switch (auth.status){
+        case Status.Uninitialized:
+          Navigator.push(context, ScaleRoute(page: Loading()));
+          break;
+        case Status.Unauthenticated:
+        case Status.Authenticating:
+          Navigator.push(context, ScaleRoute(page: SignInPage()));
+          break;
+        case Status.Authenticated:
+          Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()));
+          break;
+        default: Navigator.push(context, ScaleRoute(page: SignInPage()));
+
+      }
+
     }
   }
 

@@ -26,6 +26,9 @@ dependencies:
   carousel_pro: ^1.0.0
   font_awesome_flutter: 8.8.1
   google_maps_flutter: ^0.4.0
+  cloud_firestore: ^0.13.6
+  firebase_auth: ^0.16.1
+  provider: ^4.0.1
 
 dev_dependencies:
   flutter_test:

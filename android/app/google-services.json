@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "738663784044",
+    "firebase_url": "https://tienditapp-da00c.firebaseio.com",
+    "project_id": "tienditapp-da00c",
+    "storage_bucket": "tienditapp-da00c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738663784044:android:2602ec9755e1095e714249",
+        "android_client_info": {
+          "package_name": "com.anzgal.segundaentrega"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738663784044-tq3k57g9nsmkfai1abb64hvp5cfm39ak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIntrlrShLkjxLc2jWKA0JaS_-ucHgmxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738663784044-tq3k57g9nsmkfai1abb64hvp5cfm39ak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

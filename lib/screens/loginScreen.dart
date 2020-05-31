@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app/providers/auth.dart';
+import 'package:flutter_app/widgets/loading.dart';
+import 'package:provider/provider.dart';
 import '../animation/ScaleRoute.dart';
 import '../screens/homeScreen.dart';
 import '../screens/registerScreen.dart';
@@ -12,14 +15,17 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     String defaultFontFamily = 'Roboto-Light.ttf';
     double defaultFontSize = 14;
     double defaultIconSize = 17;
+    final authProvider = Provider.of<AuthProvider>(context);
 
     return Scaffold(
-      body: Container(
+      key: _key,
+      body: authProvider.status == Status.Authenticating? Loading(): Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 35, bottom: 30),
         width: double.infinity,
         height: double.infinity,
@@ -43,7 +49,8 @@ class _SignInPageState extends State<SignInPage> {
                   SizedBox(
                     height: 15,
                   ),
-                  TextField(
+                  TextFormField(
+                    controller: authProvider.email,
                     showCursor: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -70,7 +77,8 @@ class _SignInPageState extends State<SignInPage> {
                   SizedBox(
                     height: 15,
                   ),
-                  TextField(
+                  TextFormField(
+                    controller: authProvider.password,
                     showCursor: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -104,8 +112,57 @@ class _SignInPageState extends State<SignInPage> {
                     height: 30,
                   ),
 
+          //ButtonWidget
+          GestureDetector(
+            onTap: ()async{
+              if(!await authProvider.signIn()){
+                _key.currentState.showSnackBar(
+                  SnackBar(content: Text("Error de inicio de seión"))
+                );
+                return;
+              }
+              authProvider.clearController();
+              Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()));
+            },
+            child: Container(
 
-                  SignInButtonWidget(),
+              width: double.infinity,
+              decoration: new BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Color(0xFFfbab66),
+                  ),
+                  BoxShadow(
+                    color: Color(0xFFf7418c),
+                  ),
+                ],
+                gradient: new LinearGradient(
+                    colors: [Colors.red, Colors.yellow],
+                    begin: const FractionalOffset(0.2, 0.2),
+                    end: const FractionalOffset(1.0, 1.0),
+                    stops: [0.0, 1.0],
+                    tileMode: TileMode.clamp),
+              ),
+              child: MaterialButton(
+                  highlightColor: Colors.transparent,
+                  splashColor: Color(0xFFf7418c),
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                    child: Text(
+                      "Iniciar sesión",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          fontFamily: "WorkSansBold"),
+                    ),
+                  ),
+                  //onPressed: () => {Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()))}
+                ),
+
+            ),
+          ),
                   SizedBox(
                     height: 2,
                   ),
@@ -158,46 +215,5 @@ class _SignInPageState extends State<SignInPage> {
   }
 }
 
-class SignInButtonWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
 
-      width: double.infinity,
-      decoration: new BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Color(0xFFfbab66),
-          ),
-          BoxShadow(
-            color: Color(0xFFf7418c),
-          ),
-        ],
-        gradient: new LinearGradient(
-            colors: [Colors.red, Colors.yellow],
-            begin: const FractionalOffset(0.2, 0.2),
-            end: const FractionalOffset(1.0, 1.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp),
-      ),
-      child: MaterialButton(
-          highlightColor: Colors.transparent,
-          splashColor: Color(0xFFf7418c),
-          child: Padding(
-            padding:
-            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
-            child: Text(
-              "Iniciar sesión",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                  fontFamily: "WorkSansBold"),
-            ),
-          ),
-          onPressed: () => {Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()))}),
-
-    );
-  }
-}
 

@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/providers/auth.dart';
+import 'package:flutter_app/widgets/loading.dart';
+import 'package:provider/provider.dart';
 import '../animation/ScaleRoute.dart';
 import '../screens/homeScreen.dart';
 import '../screens/loginScreen.dart';
 import '../widgets/BottomNavBarWidget.dart';
 
 class SignUpPage extends StatelessWidget {
+  final _key = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     String defaultFontFamily = 'Roboto-Light.ttf';
     double defaultFontSize = 14;
     double defaultIconSize = 17;
+    final authProvider = Provider.of<AuthProvider>(context);
+
 
     return Scaffold(
-      body: Container(
+      resizeToAvoidBottomInset: false,
+      key: _key,
+      body: authProvider.status == Status.Authenticating? Loading(): Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 35, bottom: 30),
         width: double.infinity,
         height: double.infinity,
@@ -21,7 +30,7 @@ class SignUpPage extends StatelessWidget {
           children: <Widget>[
 
             Flexible(
-              flex: 15,
+              flex: 25,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -34,13 +43,14 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   Row(
                     children: <Widget>[
                       Flexible(
                         flex: 1,
-                        child: TextField(
+                        child: TextFormField(
+                          controller: authProvider.name,
                           showCursor: true,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -67,7 +77,8 @@ class SignUpPage extends StatelessWidget {
                       ),
                       Flexible(
                         flex: 1,
-                        child: TextField(
+                        child: TextFormField(
+                          controller: authProvider.last,
                           showCursor: true,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -85,16 +96,17 @@ class SignUpPage extends StatelessWidget {
                               fontFamily: defaultFontFamily,
                               fontSize: defaultFontSize,
                             ),
-                            hintText: "Apellidos",
+                            hintText: "Apellido",
                           ),
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
-                  TextField(
+                  TextFormField(
+                    controller: authProvider.phone,
                     showCursor: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -119,9 +131,66 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
-                  TextField(
+                  TextFormField(
+                    controller: authProvider.zip,
+                    showCursor: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      prefixIcon: Icon(
+                        Icons.location_on,
+                        color: Color(0xFF666666),
+                        size: defaultIconSize,
+                      ),
+                      fillColor: Color(0xFFF2F3F5),
+                      hintStyle: TextStyle(
+                          color: Color(0xFF666666),
+                          fontFamily: defaultFontFamily,
+                          fontSize: defaultFontSize),
+                      hintText: "Código Postal",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: authProvider.address,
+                    showCursor: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      prefixIcon: Icon(
+                        Icons.my_location,
+                        color: Color(0xFF666666),
+                        size: defaultIconSize,
+                      ),
+                      fillColor: Color(0xFFF2F3F5),
+                      hintStyle: TextStyle(
+                          color: Color(0xFF666666),
+                          fontFamily: defaultFontFamily,
+                          fontSize: defaultFontSize),
+                      hintText: "Dirección",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: authProvider.email,
                     showCursor: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -147,9 +216,10 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
-                  TextField(
+                  TextFormField(
+                    controller: authProvider.password,
                     showCursor: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -174,14 +244,64 @@ class SignUpPage extends StatelessWidget {
                       hintText: "Contraseña",
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+
 
                   SizedBox(
-                    height: 15,
+                    height: 100,
                   ),
-                  SignInButtonWidget(),
+
+
+
+          //Button widget
+          GestureDetector(
+            onTap: ()async{
+              if(!await authProvider.signUp()){
+                _key.currentState.showSnackBar(
+                    SnackBar(content: Text("Error de registro"))
+                );
+                return;
+              }
+              authProvider.clearController();
+              Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()));
+            },
+            child: Container(
+              width: double.infinity,
+              decoration: new BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.yellow,
+                  ),
+                  BoxShadow(
+                    color: Colors.red,
+                  ),
+                ],
+                gradient: new LinearGradient(
+                    colors: [Colors.red, Colors.yellow],
+                    begin: const FractionalOffset(0.2, 0.2),
+                    end: const FractionalOffset(1.0, 1.0),
+                    stops: [0.0, 1.0],
+                    tileMode: TileMode.clamp),
+              ),
+              child: MaterialButton(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.red,
+                  //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                    child: Text(
+                      "Registrar",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          fontFamily: "WorkSansBold"),
+                    ),
+                  ),
+                  //onPressed: () => {Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()))}
+                  ),
+            ),
+          ),
                   SizedBox(
                     height: 10,
                   ),
@@ -235,46 +355,5 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
-class SignInButtonWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: new BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.yellow,
-          ),
-          BoxShadow(
-            color: Colors.red,
-          ),
-        ],
-        gradient: new LinearGradient(
-            colors: [Colors.red, Colors.yellow],
-            begin: const FractionalOffset(0.2, 0.2),
-            end: const FractionalOffset(1.0, 1.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp),
-      ),
-      child: MaterialButton(
-          highlightColor: Colors.transparent,
-          splashColor: Colors.red,
-          //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-          child: Padding(
-            padding:
-            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
-            child: Text(
-              "Registrar",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                  fontFamily: "WorkSansBold"),
-            ),
-          ),
-          onPressed: () => {Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()))}),
-    );
-  }
-}
 
 
