@@ -57,9 +57,9 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
+            icon: Icon(Icons.photo_camera),
             title: Text(
-              'Carrito',
+              'ML',
               style: TextStyle(color: Color(0xFF2c2b2b)),
             ),
           ),
