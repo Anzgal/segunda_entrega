@@ -19,7 +19,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   List<Widget> _widgets = [
     HomePage(),
     MapPage(),
-    FoodOrderPage(),
+    CartScreen(),
     ProfilePage()
   ];
   tapped(int tappedIndex) {

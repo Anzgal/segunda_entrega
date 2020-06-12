@@ -1,30 +1,36 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_app/providers/auth.dart';
+
 
 class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Padding(
       padding: EdgeInsets.only(left: 10,top: 5,right: 10,bottom: 5),
-      child: TextField(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: ListTile(
+          leading: Icon(
+            Icons.search,
+            color: Colors.red,
+          ),
+          title: TextField(
+            decoration: InputDecoration(
+              hintText: "¿Qué deseas comprar hoy?",
 
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-            borderSide: BorderSide(
-              width: 0,
-              color: Color(0xFFfb3132),
-              style: BorderStyle.none,
+              border: InputBorder.none,
             ),
           ),
-          filled: true,
-          prefixIcon: Icon(
-            Icons.search,
-            color: Color(0xFFfb3132),
+          trailing: Icon(
+            Icons.filter_list,
+            color: Colors.red,
           ),
-          fillColor: Color(0xFFFAFAFA),
-          suffixIcon: Icon(Icons.sort,color: Color(0xFFfb3132),),
-          hintStyle: new TextStyle(color: Color(0xFFd0cece), fontSize: 18),
-          hintText: "¿Que deseas comprar hoy?",
         ),
       ),
     );

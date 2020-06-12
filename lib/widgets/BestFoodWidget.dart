@@ -67,7 +67,7 @@ class BestFoodTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {Navigator.push(context, ScaleRoute(page: ShopPage()));},
+      onTap: () {Navigator.push(context, ScaleRoute(page: RestaurantScreen()));},
       child: Column(
         children: <Widget>[
           Container(
