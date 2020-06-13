@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/animation/ScaleRoute.dart';
+import 'package:flutter_app/main.dart';
 import '../providers/app.dart';
 import '../providers/product.dart';
 import '../providers/restaurant.dart';
@@ -11,20 +12,23 @@ import '../widgets/restaurant.dart';
 import 'package:provider/provider.dart';
 
 class RestaurantsSearchScreen extends StatelessWidget {
+
   @override
-  Widget build(BuildContext context) {
-    final restaurantProvider = Provider.of<RestaurantProvider>(context);
-    final productProvider = Provider.of<ProductProvider>(context);
-    final app = Provider.of<AppProvider>(context);
+  Widget build(BuildContext mainContext) {
+    final restaurantProvider = Provider.of<RestaurantProvider>(mainContext);
+    final productProvider = Provider.of<ProductProvider>(mainContext);
+    final app = Provider.of<AppProvider>(mainContext);
+    GlobalKey _scaffold = GlobalKey();
 
     return Scaffold(
+      key: _scaffold,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         leading: IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(mainContext);
             }),
         title: Text("Tiendas", style: TextStyle(fontSize: 20),),
 
@@ -74,13 +78,11 @@ class RestaurantsSearchScreen extends StatelessWidget {
                 onTap: () async {
                   app.changeLoading();
                   await productProvider.loadProductsByRestaurant(
-                      restaurantId: restaurantProvider
-                          .searchedRestaurants[index].id);
+                      restaurantId: restaurantProvider.searchedRestaurants[index].id);
                   app.changeLoading();
 
-                  Navigator.push(context,ScaleRoute(page: RestaurantScreen(
-                    restaurantModel: restaurantProvider
-                        .searchedRestaurants[index],
+                  Navigator.push(mainContext,ScaleRoute(page: RestaurantScreen(
+                    restaurantModel: restaurantProvider.searchedRestaurants[index],
                   )));
 
                 },
