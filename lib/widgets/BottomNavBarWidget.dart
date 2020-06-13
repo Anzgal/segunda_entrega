@@ -20,7 +20,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   List<Widget> _widgets = [
     HomePage(),
     MapPage(),
-    MyHomePage(),
+    MLScreen(),
     ProfilePage()
   ];
   tapped(int tappedIndex) {

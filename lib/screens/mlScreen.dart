@@ -6,12 +6,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
 
-class MyHomePage extends StatefulWidget {
+class MLScreen extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MLScreenState createState() => _MLScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MLScreenState extends State<MLScreen> {
   File pickedImage;
   var text = '';
 
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(height: 10.0),
           SizedBox(height: 10.0),
           text == ''
-              ? Text('Text will display here')
+              ? Text('Escoger una imagen para iniciar el reconocimiento')
               : Expanded(
             child: SingleChildScrollView(
               child: Padding(
