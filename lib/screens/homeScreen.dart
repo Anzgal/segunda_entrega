@@ -57,14 +57,7 @@ class _HomePageState extends State<HomePage> {
         ],
 
       ),
-      body: app.isLoading
-          ? Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Loading()],
-        ),
-      )
-          : SafeArea(
+      body:  SafeArea(
     child: ListView(
 
           children: <Widget>[
