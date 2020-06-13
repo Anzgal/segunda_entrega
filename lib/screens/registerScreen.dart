@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/providers/auth.dart';
+import 'package:flutter_app/providers/category.dart';
+import 'package:flutter_app/providers/product.dart';
+import 'package:flutter_app/providers/restaurant.dart';
 import 'package:flutter_app/widgets/loading.dart';
 import 'package:provider/provider.dart';
 import '../animation/ScaleRoute.dart';
@@ -16,6 +19,9 @@ class SignUpPage extends StatelessWidget {
     double defaultFontSize = 14;
     double defaultIconSize = 17;
     final authProvider = Provider.of<AuthProvider>(context);
+    final categoryProvider = Provider.of<CategoryProvider>(context);
+    final restaurantProvider = Provider.of<RestaurantProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
 
 
     return Scaffold(
@@ -262,6 +268,9 @@ class SignUpPage extends StatelessWidget {
                 return;
               }
               authProvider.clearController();
+              categoryProvider.loadCategories();
+              restaurantProvider.loadRestaurants();
+              productProvider.loadProducts();
               Navigator.push(context, ScaleRoute(page: BottomNavBarWidget()));
             },
             child: Container(
