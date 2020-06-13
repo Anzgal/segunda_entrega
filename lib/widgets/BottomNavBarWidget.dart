@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/MapPage.dart';
+import 'package:flutter_app/screens/mlScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../screens/homeScreen.dart';
 import '../screens/FoodOrderPage.dart';
@@ -19,7 +20,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   List<Widget> _widgets = [
     HomePage(),
     MapPage(),
-    CartScreen(),
+    MyHomePage(),
     ProfilePage()
   ];
   tapped(int tappedIndex) {
