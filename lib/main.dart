@@ -3,7 +3,11 @@ import 'package:flutter_app/providers/auth.dart';
 import 'package:flutter_app/providers/category.dart';
 import 'package:flutter_app/providers/product.dart';
 import 'package:flutter_app/providers/restaurant.dart';
+import 'package:flutter_app/screens/homeScreen.dart';
+import 'package:flutter_app/screens/loginScreen.dart';
 import 'package:flutter_app/screens/splashScreen.dart';
+import 'package:flutter_app/widgets/BottomNavBarWidget.dart';
+import 'package:flutter_app/widgets/loading.dart';
 import 'package:provider/provider.dart';
 
 import 'app.dart';
@@ -26,7 +30,25 @@ void main() {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(), //  Tema Claro
 //      theme: ThemeData.dark(), // Tema Obscuro
-      home: SplashScreen(),
+      home: ScreensController(),
     ),
   ));
+
+}
+class ScreensController extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final auth = Provider.of<AuthProvider>(context);
+    switch (auth.status) {
+      case Status.Uninitialized:
+        return Loading();
+      case Status.Unauthenticated:
+      case Status.Authenticating:
+        return SignInPage();
+      case Status.Authenticated:
+        return BottomNavBarWidget();
+      default:
+        return SignInPage();
+    }
+  }
 }
