@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/animation/ScaleRoute.dart';
+import 'package:flutter_app/providers/app.dart';
+import 'package:flutter_app/providers/product.dart';
 import 'package:flutter_app/providers/restaurant.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+
+import 'ShopScreen.dart';
 
 class MapPage extends StatefulWidget {
   @override
@@ -31,6 +36,9 @@ class _MapState extends State<MapPage> {
   void didChangeDependencies() {
     //add markers
     final restaurantProvider = Provider.of<RestaurantProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
+    final app = Provider.of<AppProvider>(context);
+
     for(var restaurant in restaurantProvider.restaurants){
       var latlongarr =  restaurant.location.split(",");
       double latitude = double.parse(latlongarr[0]);
@@ -43,8 +51,18 @@ class _MapState extends State<MapPage> {
               infoWindow: InfoWindow(
                   title: restaurant.name,
                   snippet: "Rating: " + restaurant.rating.toString(),
-                  onTap: (){
-                  }
+                onTap: () async {
+                  app.changeLoading();
+
+                  await productProvider.loadProductsByRestaurant(
+                      restaurantId: restaurant.id);
+                  app.changeLoading();
+
+
+                  Navigator.push(context, ScaleRoute(page: RestaurantScreen(
+                    restaurantModel: restaurant,
+                  )));
+                },
               ),
               onTap: (){
               },
