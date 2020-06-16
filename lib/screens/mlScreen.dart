@@ -28,7 +28,7 @@ class _MLScreenState extends State<MLScreen> {
     FirebaseVisionImage visionImage = FirebaseVisionImage.fromFile(pickedImage);
 
     final ImageLabeler cloudLabeler =
-    FirebaseVision.instance.cloudImageLabeler();
+    FirebaseVision.instance.cloudImageLabeler(CloudImageLabelerOptions(confidenceThreshold: 0.7));
 
     final List<ImageLabel> cloudLabels =
     await cloudLabeler.processImage(visionImage);

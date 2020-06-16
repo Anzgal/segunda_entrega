@@ -27,3 +27,8 @@ https://github.com/flutter-devs/flutter_profileview_demo
 https://levelup.gitconnected.com/tab-bar-navigation-in-flutter-5363e5ee8a60
 https://medium.com/comunidad-flutter/login-b%C3%A1sico-flutter-e0a479c38036
 https://github.com/Tarikul711/flutter-food-delivery-app-ui
+https://gist.github.com/kenzieschmoll/2be477fb1910a5cf4ad766d8fb415d73
+Tutorial para el funcionamiento de la aplicación:
+https://tendoll.com/courses/flutter-food-delivery/
+Tutorial ML Kit:
+https://heartbeat.fritz.ai/image-labeling-in-flutter-using-firebases-ml-kit-458ad1ecde7f
